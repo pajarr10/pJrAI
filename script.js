@@ -4,7 +4,7 @@
 (function () {
   "use strict";
 
-  var API_URL = "https://api.zams.my.id/ai/chatgpt";
+  var API_URL = "https://api-nanzz.my.id/docs/api/ai/worm-gpt.php";
   var STORAGE_KEY = "pjrai_chat_history";
 
   /* ---------------- Theme ---------------- */
