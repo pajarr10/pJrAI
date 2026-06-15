@@ -298,7 +298,27 @@
       '<span class="typing"><span></span><span></span><span></span></span>';
 
     activeController = new AbortController();
-    var url = API_URL + "?q=" + encodeURIComponent(prompt);
+
+var systemPrompt =
+  "Kamu adalah pJrAI. Selalu jawab dalam bahasa Indonesia. Jangan mengaku sebagai WormGPT, ChatGPT, atau AI lain.";
+
+var context = history
+  .slice(-10)
+  .map(function(msg) {
+    return msg.role + ": " + msg.text;
+  })
+  .join("\n");
+
+var finalPrompt =
+  systemPrompt +
+  "\n\nRiwayat Percakapan:\n" +
+  context +
+  "\n\nuser: " + prompt;
+
+var url =
+  API_URL +
+  "?prompt=" +
+  encodeURIComponent(finalPrompt);
 
     // Client-side timeout so the user isn't left waiting indefinitely.
     var timedOut = false;
